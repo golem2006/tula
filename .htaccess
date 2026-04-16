@@ -1,0 +1,8 @@
+RewriteEngine On
+# Исключаем все, что существует (файлы и папки)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L] # Если это существующий файл или папка, остановиться.
+
+# Если не существует, перехватить и отправить в 404.php
+RewriteRule ^(.*)$ /404.php [L,QSA]
